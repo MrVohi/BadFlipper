@@ -24,7 +24,7 @@ param (
 
 $building =  [PSCustomObject]@{
     'title'       = 'Incoming transmission!'
-    'description' = '[' + $env:username + ']' + 'Little brother is reporting:' + `'$text'`
+    'description' = '[' + $env:username + ']' + 'Little brother is reporting:' + $text
     'color'       = '16744960'
 }
 
