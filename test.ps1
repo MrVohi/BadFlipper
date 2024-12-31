@@ -23,6 +23,7 @@ param (
 
 
 $Body = @{
+    'content'     = '<@516010166915694612>'
     'title'       = 'Incoming transmission!'
     'description' = '[' + $env:username + ']' + 'Little brother is reporting:'
     'color'       = '16744960'
