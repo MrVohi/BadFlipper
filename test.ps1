@@ -23,9 +23,8 @@ param (
 [System.Collections.ArrayList]$embedArray = @()
 
 $building =  [PSCustomObject]@{
-    'content'     = '<@516010166915694612>'
     'title'       = 'Incoming transmission!'
-    'description' = '[' + $env:username + ']' + 'Little brother is reporting:'
+    'description' = '[' + $env:username + ']' + 'Little brother is reporting:' + `$text`
     'color'       = '16744960'
 }
 
