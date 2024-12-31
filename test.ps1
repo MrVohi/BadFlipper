@@ -23,9 +23,9 @@ param (
 
 
 $Body = @{
-    title       = 'Incoming transmission!'
-    description = '[' + $env:username + ']' + 'Little brother is reporting:'
-    color       = '16744960'
+    'title'       = 'Incoming transmission!'
+    'description' = '[' + $env:username + ']' + 'Little brother is reporting:'
+    'color'       = '16744960'
 }
 
 if (-not ([string]::IsNullOrEmpty($text))){
