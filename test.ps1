@@ -20,13 +20,21 @@ param (
     [string]$text 
 )
 
+[System.Collections.ArrayList]$embedArray = @()
 
-
-$Body = @{
+$building =  [PSCustomObject]@{
     'content'     = '<@516010166915694612>'
     'title'       = 'Incoming transmission!'
     'description' = '[' + $env:username + ']' + 'Little brother is reporting:'
     'color'       = '16744960'
+}
+
+$embedArray.Add($building) | Out-Null
+
+$Body = [PSCustomObject]@{
+
+    embeds = $embedArray
+
 }
 
 if (-not ([string]::IsNullOrEmpty($text))){
