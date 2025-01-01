@@ -43,10 +43,8 @@ $Body = [PSCustomObject]@{
 
 }
 
-if (-not ([string]::IsNullOrEmpty($text))){
+if (-not ([string]::IsNullOrEmpty($text))){Invoke-restmethod -Uri $DiscordUrl -Method Post -Body ($Body | ConvertTo-Json) -Headers @{ "Content-Type" = "application/json" }};
 # Invoke-RestMethod -ContentType 'Application/Json' -Uri $DiscordUrl  -Method Post -Body ($Body | ConvertTo-Json -Depth 4)};
-
-Invoke-restmethod -Uri $DiscordUrl -Method Post -Body ($Body | ConvertTo-Json) -Headers @{ "Content-Type" = "application/json" };
 
 if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $DiscordUrl}
 }
