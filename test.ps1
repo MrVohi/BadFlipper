@@ -21,6 +21,7 @@ param (
 )
 
 [System.Collections.ArrayList]$embedArray = @()
+[System.Collections.ArrayList]$fieldsArray = @()
 
 $forEmbed =  [PSCustomObject]@{
     'title'       = 'Incoming transmission!'
