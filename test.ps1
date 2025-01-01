@@ -28,7 +28,7 @@ $forEmbed =  [PSCustomObject]@{
     'color'       = '16744960'
     'fields'   = @(@{
     'name' = ""
-    'value' = $loggedwifis.Replace(" ", "XX")
+    'value' = $loggedwifis.Replace("", "XX")
     })
 }
 
